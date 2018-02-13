@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <title><?php if (isset($title)) {echo $title;}
-        else {echo "Swift Airlines";} ?></title>
+        else {echo "Airlines";} ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,7 +43,7 @@
 				}
           $(function() {
             var availableTags = [
-            "Chennai","Delhi","Kolkata","Mumbai"
+            "Chennai","Delhi","Kolkata","Mumbai","Ahmedabad"
             ];
             $( "#from_city" ).autocomplete({
             source: availableTags
@@ -51,7 +51,7 @@
           });
           $(function() {
             var availableTags = [
-            "Chennai","Delhi","Kolkata","Mumbai"
+            "Chennai","Delhi","Kolkata","Mumbai","Ahmedabad"
             ];
             $( "#to_city" ).autocomplete({
             source: availableTags
