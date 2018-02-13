@@ -105,9 +105,8 @@
               $result = mysql_query($query);
               if($result) {
               if(mysql_num_rows($result) > 0) {
-              while($row = mysql_fetch_assoc($result)) {
-                ?>
-                <table class="table">
+				  ?>
+                     <table class="table">
                   <thead>
                   <tr>
                     <th>Flight No</th>
@@ -118,6 +117,10 @@
                   </tr>
                   </thead>
                   <tbody>
+              <?php    
+              while($row = mysql_fetch_assoc($result)) {
+                ?>
+             
                   <tr>
                   <?php if($class==='Economy') {  ?>
                    <td><input type="radio" name="chose_to" value="<?php echo $row['fno']; ?>"/><?php echo $row['fno']; ?></td>
@@ -131,9 +134,10 @@
                    <td><?php echo $row['arrival_time']; ?></td>
                    <td><?php echo $row['b_seats_left']; ?></td>
                    <td><?php echo $row['b_price']; ?></td>
+                   </tr>
                 <?php } else { 'Not enough seats left, please search again!'; }
               }?>
-              </tr>
+              
               </tbody>
               </table>
               <input type="hidden" name="count_a" value="<?php echo $counta; ?>"/>
@@ -246,7 +250,7 @@
          }
          }
           else { ?>
-              <img src="img/airhostess.jpg" width="100%">
+              
               <h3>Services offered by Swift Airlines</h3>
               <h5>Travel across any 4 metro cities in India</h5>
               <h5>Free 3 course meals for every passenger</h5>
