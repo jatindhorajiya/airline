@@ -1,5 +1,5 @@
 <?php 
-        $title = 'Swift Airlines | User Registration'; 
+        $title = 'Airlines | User Registration'; 
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 	f_logged_in_redirect();
 	include SITEURL.'/includes/overall/header.php';
@@ -60,7 +60,7 @@
 			<?php  
 
 				if(isset($_GET['success']) && empty($_GET['success'])) {
-					echo 'You have been registered to Swift Airlines successfully! Please check your Email ID for activation link!';
+					echo 'You have been registered to Airlines successfully! Please check your Email ID for activation link!';
 				} 
 				else {
 

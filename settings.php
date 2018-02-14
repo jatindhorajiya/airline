@@ -1,5 +1,5 @@
 <?php 
-        $title = 'Swift Airlines | Settings';
+        $title = 'Airlines | Settings';
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 	f_protect_page();
 	include SITEURL.'/includes/overall/header.php';

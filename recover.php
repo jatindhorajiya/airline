@@ -1,5 +1,5 @@
 <?php 
-        $title = 'Swift Airlines | Recovery Process';
+        $title = 'Airlines | Recovery Process';
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 	f_logged_in_redirect();
 	include SITEURL.'/includes/overall/header.php';

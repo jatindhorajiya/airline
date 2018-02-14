@@ -1,6 +1,6 @@
 <?php
 
-        $title = 'Swift Airlines | Login Error';
+        $title = 'Airlines | Login Error';
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 	
 

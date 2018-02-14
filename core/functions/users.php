@@ -6,7 +6,7 @@
 		$f_mailid = sanitize($f_mailid);
 		$f_data = f_data(f_id_from_email($f_mailid),'f_id','f_fname','f_uname');
 		if ($mode == 'f_uname') {
-			recovery_user_pass($f_mailid, 'Recovery: Your username', "Hello " . $f_data['f_fname'] . ",\n\nYour username is: " . $f_data['f_uname'] . "\n\n-Swift Airlines");
+			recovery_user_pass($f_mailid, 'Recovery: Your username', "Hello " . $f_data['f_fname'] . ",\n\nYour username is: " . $f_data['f_uname'] . "\n\n-Airlines");
 		}
 		else if($mode == 'f_password') {
 			$generated_password = substr(md5(rand(999, 999999)), 0, 8);
@@ -55,7 +55,7 @@
 		$data = '\'' . implode('\', \'', $register_data) . '\'';
 		
 		mysql_query("INSERT INTO `flight_users` ($fields, `f_regdate`) VALUES ($data, NOW())");
-		activation($register_data['f_mailid'], 'Swift Airlines: Activate your account', "Hello " . $register_data['f_fname'] . ", \n\nYou need to activate your account in order to use the features of Swift Airlines. Please click the link below: \n\nhttp://srikanthnatarajan.com/swift/activate.php?f_mailid=" . $register_data['f_mailid'] . "&f_mailcode=" . $register_data['f_mailcode'] . " \n\n-Swift Airlines");
+		activation($register_data['f_mailid'], 'Airlines: Activate your account', "Hello " . $register_data['f_fname'] . ", \n\nYou need to activate your account in order to use the features of Airlines. Please click the link below: \n\nhttp://srikanthnatarajan.com/swift/activate.php?f_mailid=" . $register_data['f_mailid'] . "&f_mailcode=" . $register_data['f_mailcode'] . " \n\n-Airlines");
 	}
 
 	function f_data($f_id){

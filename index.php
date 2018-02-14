@@ -251,15 +251,15 @@
          }
           else { ?>
               
-              <h3>Services offered by Swift Airlines</h3>
+              <h3>Services offered by Airlines</h3>
               <h5>Travel across any 4 metro cities in India</h5>
               <h5>Free 3 course meals for every passenger</h5>
               <h5>Free Wi-Fi services offered during your flight</h5>
               <h5>Upto 25 Kg Baggage limit for every passenger</h5>
               <h5>Unlimited Food and Alcohol in Business Class</h5>
-              <h5>Book hotels via Swift Airlines and avail 10% discount per room</h5>
+              <h5>Book hotels via Airlines and avail 10% discount per room</h5>
               <h5>Discounted travel coupons for every city</h5>
-              <h5>Hire cabs or bus via Swift Airlines and avail 10% discount per ticket</h5>
+              <h5>Hire cabs or bus via Airlines and avail 10% discount per ticket</h5>
               <h5>Avail wheelchairs and emergency services for disabled at free of cost</h5>
             </form>
           </div>

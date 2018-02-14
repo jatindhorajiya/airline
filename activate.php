@@ -1,5 +1,5 @@
 <?php
-        $title = 'Swift Airlines | Account Activation';
+        $title = 'Airlines | Account Activation';
 		
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 

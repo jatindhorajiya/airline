@@ -1,5 +1,5 @@
 <?php 
-        $title = 'Swift Airlines | Change Password';
+        $title = 'Airlines | Change Password';
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 	f_protect_page();
 
