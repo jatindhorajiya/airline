@@ -1,12 +1,12 @@
 Airline-reservation-system with Adminpanel.
 ================================
 
-Airline Reservation System has been built using PHP &amp; MySQL as a part of 8th semester project.
+Airline Reservation System has been built using PHP &amp; MySQL.
 
 Flight & Customer Manage by adminpanel.
 
 FOR User
-Username:ankur
+Username:ankur <br>
 Password: password
 
 
