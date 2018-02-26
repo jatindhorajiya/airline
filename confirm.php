@@ -18,10 +18,7 @@
 					$counta = $_POST['count_a'];
 					$countc = $_POST['count_c'];
 					$class = $_POST['class'];
-					if($class==='Economy' && $counta==='1' && $countc==='0') {
-						$aname1 = $_POST['aname1'];
-						$asex1 = $_POST['asex1'];
-						$aage1 = $_POST['aage1'];
+					if($class==='Economy') {
 						$ect1 = $_POST['ect1'];
 						$ect2 = $_POST['ect2'];
 						$eat1 = $_POST['eat1'];
@@ -64,7 +61,29 @@
 											$a2 = date('d-m-Y');
 											$e2 = str_replace('-', '', $a2);
 											$pnr1 = $e1.$e2;
-											mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr1', '$to', '$from_city', '$to_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+											if($counta!=0){
+												for($a=1; $a<=$counta; $a++){
+													$aname = "aname".$a;
+													$aage = "aage".$a;
+													$asex = "asex".$a;
+													$aname1 = $_POST[$aname];
+													$asex1 = $_POST[$asex];
+													$aage1 = $_POST[$aage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr1', '$to', '$from_city', '$to_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+												}
+										    }
+											if($countc!=0){
+												for($c=1; $c<=$countc; $c++){
+													$cname = "cname".$c;
+													$cage = "cage".$c;
+													$csex = "csex".$c;
+													$cname1 = $_POST[$cname];
+													$csex1 = $_POST[$csex];
+													$cage1 = $_POST[$cage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$cname1', '$csex1', '$cage1', '$pnr1', '$to', '$from_city', '$to_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'C', '$uid')");
+												}
+										    }
+											
 											mysql_query("INSERT INTO `booking_details` (`b_name`, `b_phno`, `b_mail`, `b_add`, `b_price`, `b_child`, `b_adults`, `b_total`, `b_status`, `b_pnr`, `b_card`, `b_fid`) VALUES ('$puname', '$puphno', '$pumail', '$puadd', '$etotr', '$countc', '$counta', '$totc', '$status', '$pnr1', '$cardnum', '$uid')");
 										}
 										$q12 = "SELECT `e_seats_left` FROM `flight_search` WHERE `fno`='$fro'";
@@ -83,8 +102,152 @@
 											$a6 = date('d-m-Y');
 											$e6 = str_replace('-', '', $a6);
 											$pnr6 = $e5.$e6+100;
-											mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr6', '$fro', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+											if($counta!=0){
+												for($a=1; $a<=$counta; $a++){
+													$aname = "aname".$a;
+													$aage = "aage".$a;
+													$asex = "asex".$a;
+													$aname1 = $_POST[$aname];
+													$asex1 = $_POST[$asex];
+													$aage1 = $_POST[$aage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr6', '$fro', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+												}
+											}
+											if($countc!=0){
+												for($c=1; $c<=$countc; $c++){
+													$cname = "cname".$c;
+													$cage = "cage".$c;
+													$csex = "csex".$c;
+													$cname1 = $_POST[$cname];
+													$csex1 = $_POST[$csex];
+													$cage1 = $_POST[$cage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$cname1', '$csex1', '$cage1', '$pnr6', '$fro', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'C', '$uid')");
+												}
+											}
 											mysql_query("INSERT INTO `booking_details` (`b_name`, `b_phno`, `b_mail`, `b_add`, `b_price`, `b_child`, `b_adults`, `b_total`, `b_status`, `b_pnr`, `b_card`, `b_fid`) VALUES ('$puname', '$puphno', '$pumail', '$puadd', '$etotr', '$countc', '$counta', '$totc', '$status', '$pnr6', '$cardnum', '$uid')");
+										}
+										echo 'Tickets Successfully Booked! Please check your bookings page for details!';
+										header('refresh: 10, url=index.php');
+
+									}
+									else {
+										echo 'Insufficient balance, tickets not booked';
+										header('refresh: 10, url=index.php');
+									}
+								}				
+							} 
+							else {
+								echo 'Invalid details provided, tickets not booked';
+								header('refresh: 10, url=index.php');
+							}
+						}
+					}else if($class==='Business') {
+						$bat1 = $_POST['bat1'];
+						$bct2 = $_POST['bct2'];
+						$bat1 = $_POST['bat1'];
+						$bat2 = $_POST['bat2'];
+						$btotr = $_POST['btotr'];
+						$totc = $counta + $countc;
+						$status = 'Booked';
+						$q1 = "SELECT * FROM `flight_search` WHERE `fno`='$to'";
+						$r1 = mysql_query($q1);
+						while($row1 = mysql_fetch_assoc($r1)) {
+							$from_city = $row1['from_city'];
+							$to_city = $row1['to_city'];
+							$depart_date = $row1['departure_date'];
+							$arr_date = $row1['arrival_date'];
+							$depart_time = $row1['departure_time'];
+							$arr_time = $row1['arrival_time'];
+						}
+						$q10 = "SELECT `c_balance` FROM `card_details` WHERE `c_cvv`='$cvvnum' AND `c_cnum`='$cardnum'";
+						$r10 = mysql_query($q10);
+						if($r10) {
+							if(mysql_num_rows($r10)>0) {
+								while($row10 = mysql_fetch_assoc($r10)) {
+									$balance = $row10['c_balance'];
+									if($balance>=$btotr) {
+										$deduct = $balance - $btotr;
+										mysql_query("UPDATE `card_details` SET `c_balance`='$deduct' WHERE `c_cvv`='$cvvnum' AND `c_cnum`='$cardnum'");
+										$q11 = "SELECT `b_seats_left` FROM `flight_search` WHERE `fno`='$to'";
+										$r11 = mysql_query($q11);
+										if($r11) {
+											if(mysql_num_rows($r11)>0) {
+												while($row11 = mysql_fetch_assoc($r11)) {
+													$b_seats_left = $row11['e_seats_left'];
+													$dec_seats11 = $b_seats_left - $totc;
+													mysql_query("UPDATE `flight_search` SET `b_seats_left`='$dec_seats11' WHERE `fno`='$to'");
+												}				
+											} 
+											date_default_timezone_set('Asia/Kolkata');
+											$a1 = date('H:i:s');
+											$e1 = str_replace(':', '', $a1);
+											$a2 = date('d-m-Y');
+											$e2 = str_replace('-', '', $a2);
+											$pnr1 = $e1.$e2;
+											if($counta!=0){
+												for($a=1; $a<=$counta; $a++){
+													$aname = "aname".$a;
+													$aage = "aage".$a;
+													$asex = "asex".$a;
+													$aname1 = $_POST[$aname];
+													$asex1 = $_POST[$asex];
+													$aage1 = $_POST[$aage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr1', '$to', '$from_city', '$to_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+												}
+										    }
+											if($countc!=0){
+												for($c=1; $c<=$countc; $c++){
+													$cname = "cname".$c;
+													$cage = "cage".$c;
+													$csex = "csex".$c;
+													$cname1 = $_POST[$cname];
+													$csex1 = $_POST[$csex];
+													$cage1 = $_POST[$cage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$cname1', '$csex1', '$cage1', '$pnr1', '$to', '$from_city', '$to_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'C', '$uid')");
+												}
+										    }
+											
+											mysql_query("INSERT INTO `booking_details` (`b_name`, `b_phno`, `b_mail`, `b_add`, `b_price`, `b_child`, `b_adults`, `b_total`, `b_status`, `b_pnr`, `b_card`, `b_fid`) VALUES ('$puname', '$puphno', '$pumail', '$puadd', '$btotr', '$countc', '$counta', '$totc', '$status', '$pnr1', '$cardnum', '$uid')");
+										}
+										$q12 = "SELECT `b_seats_left` FROM `flight_search` WHERE `fno`='$fro'";
+										$r12 = mysql_query($q12);
+										if($r12) {
+											if(mysql_num_rows($r12)>0) {
+												while($row12 = mysql_fetch_assoc($r12)) {
+													$b_seats_left = $row12['b_seats_left'];
+													$dec_seats12 = $b_seats_left - $totc;
+													mysql_query("UPDATE `flight_search` SET `b_seats_left`='$dec_seats12' WHERE `fno`='$fro'");
+												}				
+											} 
+											date_default_timezone_set('Asia/Kolkata');
+											$a5 = date('H:i:s');
+											$e5 = str_replace(':', '', $a5);
+											$a6 = date('d-m-Y');
+											$e6 = str_replace('-', '', $a6);
+											$pnr6 = $e5.$e6+100;
+											if($counta!=0){
+												for($a=1; $a<=$counta; $a++){
+													$aname = "aname".$a;
+													$aage = "aage".$a;
+													$asex = "asex".$a;
+													$aname1 = $_POST[$aname];
+													$asex1 = $_POST[$asex];
+													$aage1 = $_POST[$aage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr6', '$fro', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+												}
+											}
+											if($countc!=0){
+												for($c=1; $c<=$countc; $c++){
+													$cname = "cname".$c;
+													$cage = "cage".$c;
+													$csex = "csex".$c;
+													$cname1 = $_POST[$cname];
+													$csex1 = $_POST[$csex];
+													$cage1 = $_POST[$cage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$cname1', '$csex1', '$cage1', '$pnr6', '$fro', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'C', '$uid')");
+												}
+											}
+											mysql_query("INSERT INTO `booking_details` (`b_name`, `b_phno`, `b_mail`, `b_add`, `b_price`, `b_child`, `b_adults`, `b_total`, `b_status`, `b_pnr`, `b_card`, `b_fid`) VALUES ('$puname', '$puphno', '$pumail', '$puadd', '$btotr', '$countc', '$counta', '$totc', '$status', '$pnr6', '$cardnum', '$uid')");
 										}
 										echo 'Tickets Successfully Booked! Please check your bookings page for details!';
 										header('refresh: 10, url=index.php');
@@ -104,18 +267,11 @@
 					}
 				}
 				else {
-					/*echo '<pre>';
-					print_r($_POST);
-					exit;*/
-					
 					$to = $_POST['chose_to'];
 					$counta = $_POST['count_a'];
 					$countc = $_POST['count_c'];
 					$class = $_POST['class'];
-					if($class==='Economy' && $counta==='1' && $countc==='0') {
-						$aname1 = $_POST['aname1'];
-						$asex1 = $_POST['asex1'];
-						$aage1 = $_POST['aage1'];
+					if($class==='Economy') {
 						$ect1 = $_POST['ect1'];
 						$eat1 = $_POST['eat1'];
 						$etotr = $_POST['etot1'];
@@ -154,7 +310,29 @@
 											$a1 = date('H:i:s');
 											$e1 = str_replace(':', '', $a1);
 											$pnr1 = $e1.$e1;
-											mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$asex1', '$aage1', '$pnr1', '$to', '$from_city', '$to_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+											
+											if($counta!=0){
+												for($a=1; $a<=$counta; $a++){
+													$aname = "aname".$a;
+													$aage = "aage".$a;
+													$asex = "asex".$a;
+													$aname1 = $_POST[$aname];
+													$asex1 = $_POST[$asex];
+													$aage1 = $_POST[$aage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$aage1', '$asex1', '$pnr1', '$to', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+												}
+											}
+											if($countc!=0){
+												for($c=1; $c<=$countc; $c++){
+													$cname = "cname".$c;
+													$cage = "cage".$c;
+													$csex = "csex".$c;
+													$cname1 = $_POST[$cname];
+													$csex1 = $_POST[$csex];
+													$cage1 = $_POST[$cage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$cname1', '$cage1', '$csex1', '$pnr1', '$to', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'C', '$uid')");
+												}
+											}
 											mysql_query("INSERT INTO `booking_details` (`b_name`, `b_phno`, `b_mail`, `b_add`, `b_price`, `b_child`, `b_adults`, `b_total`, `b_status`, `b_pnr`, `b_card`, `b_fid`) VALUES ('$puname', '$puphno', '$pumail', '$puadd', '$etotr', '$countc', '$counta', '$totc', '$status', '$pnr1', '$cardnum', '$uid')");
 										}
 										
@@ -174,7 +352,88 @@
 							}
 						}
 					}
-				
+				    else
+					if($class==='Business') {
+						$bct1 = $_POST['bct1'];
+						$bat1 = $_POST['bat1'];
+						$btotr = $_POST['btot1'];
+						$totc = $counta + $countc;
+						$status = 'Booked';
+						$q1 = "SELECT * FROM `flight_search` WHERE `fno`='$to'";
+						$r1 = mysql_query($q1);
+						while($row1 = mysql_fetch_assoc($r1)) {
+							$from_city = $row1['from_city'];
+							$to_city = $row1['to_city'];
+							$depart_date = $row1['departure_date'];
+							$arr_date = $row1['arrival_date'];
+							$depart_time = $row1['departure_time'];
+							$arr_time = $row1['arrival_time'];
+						}
+						$q10 = "SELECT `c_balance` FROM `card_details` WHERE `c_cvv`='$cvvnum' AND `c_cnum`='$cardnum'";
+						$r10 = mysql_query($q10);
+						if($r10) {
+							if(mysql_num_rows($r10)>0) {
+								while($row10 = mysql_fetch_assoc($r10)) {
+									$balance = $row10['c_balance'];
+									if($balance>=$btotr) {
+										$deduct = $balance - $btotr;
+										mysql_query("UPDATE `card_details` SET `c_balance`='$deduct' WHERE `c_cvv`='$cvvnum' AND `c_cnum`='$cardnum'");
+										$q11 = "SELECT `b_seats_left` FROM `flight_search` WHERE `fno`='$to'";
+										$r11 = mysql_query($q11);
+										if($r11) {
+											if(mysql_num_rows($r11)>0) {
+												while($row11 = mysql_fetch_assoc($r11)) {
+													$b_seats_left = $row11['b_seats_left'];
+													$dec_seats11 = $b_seats_left - $totc;
+													mysql_query("UPDATE `flight_search` SET `b_seats_left`='$dec_seats11' WHERE `fno`='$to'");
+												}				
+											} 
+											date_default_timezone_set('Asia/Kolkata');
+											$a1 = date('H:i:s');
+											$e1 = str_replace(':', '', $a1);
+											$pnr1 = $e1.$e1;
+											
+											if($counta!=0){
+												for($a=1; $a<=$counta; $a++){
+													$aname = "aname".$a;
+													$aage = "aage".$a;
+													$asex = "asex".$a;
+													$aname1 = $_POST[$aname];
+													$asex1 = $_POST[$asex];
+													$aage1 = $_POST[$aage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$aname1', '$aage1', '$asex1', '$pnr1', '$to', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'A', '$uid')");
+												}
+											}
+											if($countc!=0){
+												for($c=1; $c<=$countc; $c++){
+													$cname = "cname".$c;
+													$cage = "cage".$c;
+													$csex = "csex".$c;
+													$cname1 = $_POST[$cname];
+													$csex1 = $_POST[$csex];
+													$cage1 = $_POST[$cage];
+													mysql_query("INSERT INTO `passenger_details` (`p_name`, `p_age`, `p_sex`, `p_pnr`, `p_fno`, `p_from`, `p_to`, `p_dedate`, `p_ardate`, `p_detime`, `p_artime`, `p_class`, `p_status`, `p_passtype`, `p_fid`) VALUES ('$cname1', '$cage1', '$csex1', '$pnr1', '$to', '$to_city', '$from_city', '$depart_date', '$arr_date', '$depart_time', '$arr_time', '$class', '$status', 'C', '$uid')");
+												}
+											}
+											mysql_query("INSERT INTO `booking_details` (`b_name`, `b_phno`, `b_mail`, `b_add`, `b_price`, `b_child`, `b_adults`, `b_total`, `b_status`, `b_pnr`, `b_card`, `b_fid`) VALUES ('$puname', '$puphno', '$pumail', '$puadd', '$btotr', '$countc', '$counta', '$totc', '$status', '$pnr1', '$cardnum', '$uid')");
+										}
+										
+										echo 'Tickets Successfully Booked! Please check your bookings page for details!';
+										header('refresh: 10, url=index.php');
+
+									}
+									else {
+										echo 'Insufficient balance, tickets not booked';
+										header('refresh: 10, url=index.php');
+									}
+								}				
+							} 
+							else {
+								echo 'Invalid details provided, tickets not booked';
+								header('refresh: 10, url=index.php');
+							}
+						}
+					} 
 				}
 			}
 		}

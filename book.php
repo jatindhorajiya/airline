@@ -228,36 +228,45 @@
 			<div class="well bs-component">
 				<form class="form-horizontal" action="card.php" method="GET">
 					<h4>Adult Passenger Details</h4>
+                    <?php if(isset($_GET['count_a'])===true) { 
+					   for($a=1;$a<=$_GET['count_a'];$a++){
+					?>
+                    
 					<div class="form-group">
 	                    <div class="col-lg-6">
-	                      <input type="text" class="form-control" <?php  if($counta==='1' || $counta==='2') echo 'required'; ?> name="aname1" id="inputEmail" placeholder="Name">
+	                      <input type="text" class="form-control" required="required"  name="aname<?php echo $a; ?>" id="inputEmail<?php echo $a; ?>" placeholder="Name">
 	                    </div>
 	                    <div class="col-lg-3">
-	                      <input type="text" class="form-control" <?php  if($counta==='1' || $counta==='2') echo 'required'; ?> name="aage1" id="inputEmail" placeholder="Age">
+	                      <input type="text" class="form-control" required="required" name="aage<?php echo $a; ?>" id="inputAge<?php echo $a; ?>" placeholder="Age">
 	                    </div>
 	                    <div class="col-lg-3">
-	                      <select class="form-control" name="asex1" <?php  if($counta==='1' || $counta==='2') echo 'required'; ?> id="select">
+	                      <select class="form-control" name="asex<?php echo $a; ?>" id="select<?php echo $a; ?>">
 		                    <option value="M">Male</option>
 		                    <option value="F">Female</option>
 		                  </select>
 	                    </div>
 	                </div>
-	                <hr>
+                    <?php } } ?>
+	                
+                    <?php if(isset($_GET['count_c'])===true && $_GET['count_c']!=0 ) { ?>
+                    <hr>
 	                <h4>Child Passenger Details</h4>
+                    <?php for($a=1;$a<=$_GET['count_c'];$a++){ ?>
 	                <div class="form-group">
 	                    <div class="col-lg-6">
-	                      <input type="text" class="form-control" name="cname1" <?php  if($countc==='1' || $countc==='2') echo 'required'; ?> id="inputEmail" placeholder="Name">
+	                      <input type="text" class="form-control" name="cname<?php echo $a; ?>"  id="inputEmail" placeholder="Name">
 	                    </div>
 	                    <div class="col-lg-3">
-	                      <input type="text" class="form-control" name="cage1" <?php  if($countc==='1' || $countc==='2') echo 'required'; ?> id="inputEmail" placeholder="Age">
+	                      <input type="text" class="form-control" name="cage<?php echo $a; ?>"  id="inputEmail" placeholder="Age">
 	                    </div>
 	                    <div class="col-lg-3">
-	                      <select class="form-control" name="csex1" <?php  if($countc==='1' || $countc==='2') echo 'required'; ?> id="select">
+	                      <select class="form-control" name="csex<?php echo $a; ?>" id="select">
 		                    <option value="M">Male</option>
 		                    <option value="F">Female</option>
 		                  </select>
 	                    </div>
 	                </div>
+                    <?php } } ?>
 	                <hr>
 	                <h4>User Contact Details</h4>
 	                <div class="form-group">

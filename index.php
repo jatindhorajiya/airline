@@ -52,6 +52,11 @@
                 <label for="select" class="control-label">Number of Adults</label>
                   <select class="form-control" name="count_a" id="select">
                     <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                   </select>
                 </div>
               </div>
@@ -84,7 +89,9 @@
         <div class="col-lg-8">
           <div class="well bs-component">
             <form class="form-horizontal" action="book.php" method="GET">
-            <?php 
+            
+			
+			<?php 
             
             if(isset($_GET['path'])===true 
               && isset($_GET['from_city'])===true && isset($_GET['to_city'])===true
@@ -98,14 +105,15 @@
               $path = $_GET['path'];
               $counta = $_GET['count_a'];
               $countc = $_GET['count_c'];
-
+				
               if($path==='oneway') {
               echo '<legend>Flights from '.$from.' to '.$to.'</legend>';
               $query = "SELECT * FROM `flight_search` WHERE `from_city`= '$from' AND `to_city` = '$to' AND `departure_date` = '$departdate'";
               $result = mysql_query($query);
               if($result) {
               if(mysql_num_rows($result) > 0) {
-				  ?>
+				echo '<p >'.$class.' Class</p>';  ?>
+                
                      <table class="table">
                   <thead>
                   <tr>
@@ -154,7 +162,8 @@
               $result1 = mysql_query($query1);
               if($result1) {
               if(mysql_num_rows($result1) > 0) {
-				  ?>
+				  echo '<p >'.$class.' Class</p>';?>
+                  
                    <table class="table">
                       <thead>
                       <tr>
@@ -181,11 +190,11 @@
                   </tr>
                  <?php } else { ?>  
                    <tr>
-                    <td><input type="radio" required name="chose_fro" value="<?php echo $row2['fno']; ?>"/><?php echo $row2['fno']; ?></td>
-                   <td><?php echo $row2['departure_time']; ?></td>
-                   <td><?php echo $row2['arrival_time']; ?></td>
-                   <td><?php echo $row2['b_seats_left']; ?></td>
-                   <td><?php echo $row2['b_price']; ?></td>
+                    <td><input type="radio" required name="chose_fro" value="<?php echo $row1['fno']; ?>"/><?php echo $row1['fno']; ?></td>
+                   <td><?php echo $row1['departure_time']; ?></td>
+                   <td><?php echo $row1['arrival_time']; ?></td>
+                   <td><?php echo $row1['b_seats_left']; ?></td>
+                   <td><?php echo $row1['b_price']; ?></td>
                    </tr>  
                 <?php }
               }
