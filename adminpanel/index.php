@@ -10,6 +10,7 @@ $db->where('b_status', 'Booked');
 $booked = $db->getValue ("booking_details", "sum(b_total)");
 $db->where('b_status', 'CANCELLED');
 $cancel_booked = $db->getValue ("booking_details", "sum(b_total)");
+if(isset($cancel_booked)===false) $cancel_booked=0;
 
 $db->where('b_status', 'Booked');
 $payment = $db->getValue ("booking_details", "sum(b_price)");
