@@ -26,6 +26,7 @@
 	      		exit();
 	      }
 	}
+	require SITEURL.'/adminpanel/config/config.php';
 
 	$errors = array();
 

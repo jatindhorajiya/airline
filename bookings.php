@@ -2,47 +2,105 @@
   include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
   include SITEURL.'/includes/overall/header.php';
 ?>
-      
       <legend>My Bookings</legend>
 
       <?php
         $uid=$f_data['f_id']; //Assigns logged in id to a variable
-        $query="SELECT * FROM `passenger_details` WHERE `p_fid` = '$uid'"; //Sorts by date time
-        $result=mysql_query($query);
-        if($result) {
-        while($row=mysql_fetch_assoc($result))
+		
+		$query="SELECT * FROM booking_details WHERE b_fid = $uid"; //Sorts by date time
+        
+		$resultb=$db->query($query);
+	
+		if(count($resultb)) {
+			foreach($resultb as $b){
+				$query="SELECT * FROM passenger_details WHERE p_pnr = ".$b['b_pnr']; //Sorts by date time
+				$result=$db->query($query);
+	     ?>
+		  <table class="table table-striped ">
+             <tbody>
+                 <tr>
+                	<td><?php echo $result[0]['p_fno'] ?>'s Flight Details</td>
+                    <td>Passenger's Details</td>
+                  </tr>  
+                <tr>
+                	<td>
+                        <table class="table table-bordered">
+                        	<tr>
+                            	<th>Flight No:</th>
+                                <td><?php echo $result[0]['p_fno'] ?></td>
+                            </tr>
+                            <tr>
+                            	<th>From:</th>
+                                <td><?php echo $result[0]['p_from'] ?></td>
+                            </tr>
+                            <tr>
+                            	<th>to:</th>
+                                <td><?php echo $result[0]['p_to'] ?></td>
+                            </tr>
+                            <tr>
+                            	<th>Class:</th>
+                                <td><?php echo $result[0]['p_class'] ?></td>
+                            </tr>
+                             <tr>
+                            	<th>PNR Number:</th>
+                                <td><?php echo $result[0]['p_pnr'] ?></td>
+                            </tr>
+                             <tr>
+                            	<th>Departure Date & time:</th>
+                                <td><?php echo $result[0]['p_dedate'].' '.$result[0]['p_detime']; ?></td>
+                            </tr>
+                             <tr>
+                            	<th>Arrival Date & time:</th>
+                                <td><?php echo $result[0]['p_ardate'].' '.$result[0]['p_artime']; ?></td>
+                            </tr>
+                            <tr>
+                            	<th>Price:</th>
+                                <td>Rs. <?php echo $b['b_price'] ?></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                     
+                  <table class="table table-bordered"> <tr><th>Passenger Name</th> <th>Passenger Age</th> <th>Passenger Sex</th> <th>Passenger Type</th></tr> 
+		 
+		<?php foreach($result as $row)
         {
+			
           if($uid===$row['p_fid']) //Checks if the logged in id matches with id in DB
           { 
-            $pnr = $row['p_pnr'];
-            $fno = $row['p_fno'];
-            echo '<form action="cancel.php" method="POST">';
-            echo 'Flight No: '.$row['p_fno'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'From: '.$row['p_from'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'To: '.$row['p_to'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'Class: '.$row['p_class'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'PNR Number: '.$row['p_pnr'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<br/>';
-            echo 'Departure Date: '.$row['p_dedate'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'Departure Time: '.$row['p_detime'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'Arrival Date: '.$row['p_ardate'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            echo 'Arrival Time: '.$row['p_artime'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<br/>';
-            echo 'Passenger Name: '.$row['p_name'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<br>';
-            echo 'Passenger Age: '.$row['p_age'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<br>';
-            echo 'Passenger Sex: '.$row['p_sex'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<br>';
-            echo 'Passenger Type: '.$row['p_passtype'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<br><br>';
-            echo "<input type='hidden' value='$pnr' id='p_pnr' name='p_pnr' />";
-            echo "<input type='hidden' value='$fno' id='p_fno' name='p_fno' />";
-            if($row['p_status']==='Booked') {
-            echo '<button type="submit" value="cancel" name="cancel" class="btn btn-primary">Cancel Bookings</button>';
-            echo '<br/><hr>';
-            echo '</form>';
-          } else {
-            echo '<br/><hr>';
-            echo '</form>';
-           }
-          }
+		    $type="Adult";
+			$sex="Male";
+			if($row['p_passtype']=='C'){$type="Child";}
+			if($row['p_sex']=='F'){$sex="Female";}
+                     	echo '<tr>
+						      <td>'.$row['p_name'].'</td>
+							  <td>'.$row['p_age'].'</td>
+							  <td>'.$sex.'</td>
+							  <td>'.$type.'</td>
+						</tr>';	
+            }
         }
-      }
+		?>
+        	</table>
+              <table class="table table-bordered">
+                 <tr>
+                    <td align="right">
+                    	 <form action="cancel.php" method="POST">
+                             <input type='hidden' value='<?php echo $result[0]['p_pnr'] ?>' id='p_pnr' name='p_pnr' />
+                             <input type='hidden' value='<?php echo $result[0]['p_fno'] ?>' id='p_fno' name='p_fno' />
+                             <button type="submit" value="cancel" name="cancel" class="btn btn-primary ">Cancel Bookings</button>
+                         </form>
+                    </td>
+                 </tr>
+              </table>
+		 		</td>
+                </tr>
+             </tbody>
+          </table>
+          <hr />
+     <?php 
+	   } 
+	 }
 ?>
     
 <?php include SITEURL.'/includes/overall/footer.php'; ?>
