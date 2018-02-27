@@ -7,9 +7,9 @@ require_once 'includes/auth_validate.php';
 //Get Dashboard information
 $numCustomers = $db->getValue ("flight_users", "count(*)");
 $db->where('b_status', 'Booked');
-$booked = $db->getValue ("booking_details", "count(*)");
+$booked = $db->getValue ("booking_details", "sum(b_total)");
 $db->where('b_status', 'CANCELLED');
-$cancel_booked = $db->getValue ("booking_details", "count(*)");
+$cancel_booked = $db->getValue ("booking_details", "sum(b_total)");
 
 $db->where('b_status', 'Booked');
 $payment = $db->getValue ("booking_details", "sum(b_price)");
