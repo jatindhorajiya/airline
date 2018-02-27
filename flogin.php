@@ -26,9 +26,9 @@
                 <center><button type="submit" id="submit" value="submit" name="submit" class="btn btn-success">Login</button></center>
               </div>
               </form>
-            	<strong><a href="http://localhost/swift/fregister.php" style="color:white">Register Here</a></strong><br/><br/>
-            	<strong><a href="http://localhost/swift/recover.php?mode=f_uname" style="color:white">Forgot Username?</a></strong><br/>
-            	<strong><a href="http://localhost/swift/recover.php?mode=f_password" style="color:white">Forgot Password?</a></strong><br/>
+            	<strong><a href="http://localhost/airline/fregister.php" style="color:white">Register Here</a></strong><br/><br/>
+            	<strong><a href="http://localhost/airline/recover.php?mode=f_uname" style="color:white">Forgot Username?</a></strong><br/>
+            	<strong><a href="http://localhost/airline/recover.php?mode=f_password" style="color:white">Forgot Password?</a></strong><br/>
             </form>
             </div>
             </div></div>
