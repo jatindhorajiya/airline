@@ -15,6 +15,7 @@
 			foreach($resultb as $b){
 				$query="SELECT * FROM passenger_details WHERE p_pnr = ".$b['b_pnr']; //Sorts by date time
 				$result=$db->query($query);
+				if(count($result)){
 	     ?>
 		  <table class="table table-striped ">
              <tbody>
@@ -100,6 +101,7 @@
           <hr />
      <?php 
 	   } 
+			}
 	 }
 ?>
     

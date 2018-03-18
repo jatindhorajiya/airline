@@ -190,7 +190,7 @@
                   </tr>
                  <?php } else { ?>  
                    <tr>
-                    <td><input type="radio" required name="chose_fro" value="<?php echo $row1['fno']; ?>"/><?php echo $row1['fno']; ?></td>
+                    <td><input type="radio" required name="chose_to" value="<?php echo $row1['fno']; ?>"/><?php echo $row1['fno']; ?></td>
                    <td><?php echo $row1['departure_time']; ?></td>
                    <td><?php echo $row1['arrival_time']; ?></td>
                    <td><?php echo $row1['b_seats_left']; ?></td>
