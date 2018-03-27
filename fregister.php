@@ -74,6 +74,7 @@
 						'f_mailid' 	=> $_POST['f_mailid'],
 						'f_address' 	=> $_POST['f_address'],
 						'f_phone' 	=> $_POST['f_phone'],
+						'f_active' => '1',
 						'f_mailcode'	=> md5($_POST['f_uname'] + microtime())
 						);
 					register_f($register_data);
