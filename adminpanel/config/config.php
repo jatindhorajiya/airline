@@ -11,4 +11,4 @@ $password = "";
 $dbname = "airline";
 // create connection object
 
-$db =new MysqliDb($servername,$username,$password,$dbname,'3308');
+$db =new MysqliDb($servername,$username,$password,$dbname,'3306');
