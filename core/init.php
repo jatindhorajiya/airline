@@ -3,6 +3,7 @@
 	session_start();
 	//error_reporting(0);
     define ('SITEURL',$_SERVER["DOCUMENT_ROOT"].'/airline');
+	define ('WSITEURL','http://'.$_SERVER['HTTP_HOST'].'/airline');
 	
 	require SITEURL.'/core/database/connect.php';
 	require SITEURL.'/core/functions/general.php';

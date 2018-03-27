@@ -2,6 +2,6 @@
 
 	session_start();
 	session_destroy();
-	header('Location: '.$_SERVER["DOCUMENT_ROOT"].'/airline/index.php');
-
+	header('Location: http://'.$_SERVER['HTTP_HOST'].'/airline');
+    exit;
 ?>

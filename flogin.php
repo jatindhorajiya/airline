@@ -5,7 +5,7 @@
 	include SITEURL.'/includes/overall/header.php';
 ?>
             
-            <form class="form-horizontal" action="loginact.php" method="POST">
+            <form class="form-horizontal" action="<?php echo WSITEURL; ?>/loginact.php" method="POST">
                   <div class="row">
                   <div class="col-lg-4">
             	<div class="well bs-component">

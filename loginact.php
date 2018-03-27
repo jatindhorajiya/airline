@@ -29,7 +29,7 @@
 			}
 			else {
 				$_SESSION['f_id'] = $f_login;
-				header('Location: '.SITEURL.'/index.php');
+				header('Location: '.WSITEURL.'');
 				exit();
 			}
 		} 		
