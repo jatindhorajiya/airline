@@ -1,9 +1,12 @@
 <?php 
-        $title = 'Airlines | Settings';
+    $title = 'Airlines | Settings';
 	include $_SERVER["DOCUMENT_ROOT"].'/airline/core/init.php';
 	f_protect_page();
 	include SITEURL.'/includes/overall/header.php';
-
+	$name = $f_data['f_fname'].' '.$f_data['f_lname'];
+	$query="SELECT * FROM `card_details` WHERE `c_name`='$name'";
+  	$result2=$db->query($query);
+  	$b=$result2[0];
 	if(empty($_POST)===false) {
 		$required_fields = array('f_fname','f_lname','f_mailid');
 		foreach($_POST as $key=>$value) {
@@ -54,19 +57,47 @@
 	}
 
 ?>
-
-<form action="" method="POST">
-	<br/>
-	First Name: <br/>
-	<input type="text" name="f_fname" value="<?php echo $f_data['f_fname']; ?>"/><br/><br/>
-	Last Name: <br/>
-	<input type="text" name="f_lname" value="<?php echo $f_data['f_lname']; ?>"/><br/><br/>
-	Email ID: <br/>
-	<input type="text" name="f_mailid" value="<?php echo $f_data['f_mailid']; ?>"/><br/><br/>
-	<input type="submit" class="btn btn" value="Update" /><br/><br/>
-
-</form>
-
+<br />
+<div class="row">
+<div class="col-md-6">
+    <form action="" method="POST">
+        <div class="form-group">
+            <label>First Name: </label> 
+            <input type="text" name="f_fname"  class="form-control"  value="<?php echo $f_data['f_fname']; ?>"/>
+        </div>
+        <div class="form-group">
+        <label>Last Name: </label>
+        <input type="text" name="f_lname" class="form-control" value="<?php echo $f_data['f_lname']; ?>"/>
+        </div>
+        <div class="form-group">
+        <label>Email ID: </label>
+        <input type="text" name="f_mailid" class="form-control" value="<?php echo $f_data['f_mailid']; ?>"/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Update" />
+    
+    </form>
+</div>
+<div class="col-md-6">
+   <h4>Card Details</h4>
+   <table class="table table-bordered">
+   		<tr>
+            <th colspan="2"> TOTAL Balance : <?php echo $b['c_balance']; ?> /- Rupees</th>
+        </tr>
+        <tr>
+        	<td>Name On Card </td>
+            <td><?php echo $b['c_name']; ?></td>
+        </tr>
+        <tr>
+        	<td>Card Number</td>
+            <td><?php echo $b['c_cnum']; ?></td>
+        </tr>
+        <tr>
+        	<td>Card CVV</td>
+            <td><?php echo $b['c_cvv']; ?></td>
+        </tr>
+   </table>
+</div>
+</div>
 <?php
 }
 

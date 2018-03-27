@@ -2,11 +2,11 @@
 
 
 	function activation($to, $subject, $body) {
-		mail($to, $subject, $body, 'From: swift@srikanthnatarajan.com');
+		mail($to, $subject, $body, 'From: jatindhorajiya@gmail.com');
 	}
 	
 	function recovery_user_pass($to, $subject, $body) {
-		mail($to, $subject, $body, 'From: swift@srikanthnatarajan.com');
+		mail($to, $subject, $body, 'From: jatindhorajiya@gmail.com');
 	}
 
 	function f_protect_page() {
