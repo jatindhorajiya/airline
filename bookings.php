@@ -83,13 +83,20 @@
         }
 		?>
         	</table>
-              <table class="table table-bordered">
+              <table  class="table table-bordered">
                  <tr>
+                    <td align="right">
+                        <form action="pdf.php" method="POST" target="_blank">
+                             <input type='hidden' value='<?php echo $result[0]['p_pnr'] ?>' id='p_pnr' name='p_pnr' />
+                             <input type='hidden' value='<?php echo $result[0]['p_fno'] ?>' id='p_fno' name='p_fno' />
+                             <button type="submit" value="pdf" name="action" class="btn btn-success ">PDF Generate</button>
+                         </form>
+                    </td>
                     <td align="right">
                     	 <form action="cancel.php" method="POST">
                              <input type='hidden' value='<?php echo $result[0]['p_pnr'] ?>' id='p_pnr' name='p_pnr' />
                              <input type='hidden' value='<?php echo $result[0]['p_fno'] ?>' id='p_fno' name='p_fno' />
-                             <button type="submit" value="cancel" name="cancel" class="btn btn-primary ">Cancel Bookings</button>
+                             <button type="submit" value="cancel" name="cancel" class="btn btn-danger ">Cancel Bookings</button>
                          </form>
                     </td>
                  </tr>
